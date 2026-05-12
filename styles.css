@@ -1959,8 +1959,17 @@ html, body { overflow: hidden; height: 100vh; margin: 0; }
 }
 
 /* ── Current Problem Video (Improvement 07) ── */
+#s-filtering .impr-top-row {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+#s-filtering .impr-whatdo-col .quote-block {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 6px;
+}
 .bm-problem {
-  margin-top: 18px;
+  margin-top: 6px;
 }
 .bm-problem-label {
   font-family: var(--mono);
