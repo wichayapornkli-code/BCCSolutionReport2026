@@ -880,6 +880,22 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
   });
 })();
 
+// Benchmark tab switching (Improvement 07)
+(function() {
+  document.querySelectorAll('.bm-tab-group').forEach(group => {
+    const tabs = group.querySelectorAll('.impr-tab');
+    const panels = group.closest('.bm-area').querySelectorAll('.bm-panel');
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        panels.forEach(p => p.classList.remove('active'));
+        if (panels[idx]) panels[idx].classList.add('active');
+      });
+    });
+  });
+})();
+
 // Back-to-index links: use snapToIndex instead of native anchor scroll
 document.querySelectorAll('a.back-to-index').forEach(link => {
   link.addEventListener('click', e => {
