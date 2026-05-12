@@ -880,6 +880,31 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
   });
 })();
 
+// Image lightbox for benchmark images
+(function() {
+  const lightbox = document.getElementById('img-lightbox');
+  const lightboxImg = document.getElementById('img-lightbox-img');
+  const closeBtn = document.getElementById('img-lightbox-close');
+  if (!lightbox || !lightboxImg || !closeBtn) return;
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+  }
+
+  document.querySelectorAll('.bm-img img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+})();
+
 // Benchmark tab switching (Improvement 07)
 (function() {
   document.querySelectorAll('.bm-tab-group').forEach(group => {
