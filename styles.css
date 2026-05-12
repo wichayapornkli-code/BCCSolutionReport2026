@@ -1877,6 +1877,30 @@ html, body { overflow: hidden; height: 100vh; margin: 0; }
   margin-top: 14px;
 }
 
+.preview-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 0.73rem;
+  color: var(--dimmer);
+  line-height: 1.55;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: rgba(30,45,130,0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(30,45,130,0.08);
+}
+.preview-disclaimer::before {
+  content: '';
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  margin-top: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg width='13' height='13' viewBox='0 0 13 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='6.5' cy='6.5' r='6' stroke='%231E2D82' stroke-opacity='0.5' stroke-width='1'/%3E%3Cpath d='M6.5 5.5v4' stroke='%231E2D82' stroke-opacity='0.5' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='6.5' cy='3.5' r='0.8' fill='%231E2D82' fill-opacity='0.5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .impr-preview-img {
   width: 100%;
   height: auto;
