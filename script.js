@@ -878,6 +878,8 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
   document.querySelectorAll('.impr-preview-wrap .impr-preview-img.active').forEach(el => {
     if (el.tagName === 'VIDEO') el.play();
   });
+  // Auto-play current-problem videos
+  document.querySelectorAll('.bm-problem-video').forEach(el => el.play());
 })();
 
 // Image lightbox for benchmark images

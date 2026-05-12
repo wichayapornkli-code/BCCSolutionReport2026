@@ -1958,6 +1958,27 @@ html, body { overflow: hidden; height: 100vh; margin: 0; }
   background-repeat: no-repeat;
 }
 
+/* ── Current Problem Video (Improvement 07) ── */
+.bm-problem {
+  margin-top: 18px;
+}
+.bm-problem-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dimmer);
+  margin-bottom: 8px;
+}
+.bm-problem-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+}
+
 /* ── Benchmark Exploration (Improvement 07) ── */
 .bm-area {
   margin-top: 20px;
