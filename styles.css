@@ -1970,11 +1970,12 @@ html, body { overflow: hidden; height: 100vh; margin: 0; }
 }
 .bm-problem {
   margin-top: 6px;
-  background: linear-gradient(135deg, rgba(245,243,239,0.95), rgba(250,248,245,0.92));
-  border: 1px solid rgba(20,20,20,0.07);
-  border-radius: 20px;
-  padding: 22px 24px;
-  box-shadow: 0 2px 12px rgba(20,20,20,0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(247,244,238,0.94));
+  border: 1px solid rgba(20,20,20,0.06);
+  border-radius: 26px;
+  padding: 24px 24px 22px;
+  position: relative;
+  overflow: hidden;
 }
 .bm-problem-row {
   display: grid;
