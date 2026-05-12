@@ -878,8 +878,20 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
   document.querySelectorAll('.impr-preview-wrap .impr-preview-img.active').forEach(el => {
     if (el.tagName === 'VIDEO') el.play();
   });
-  // Auto-play current-problem videos
-  document.querySelectorAll('.bm-problem-video').forEach(el => el.play());
+  // Click-to-play for current-problem videos
+  document.querySelectorAll('.bm-problem-player').forEach(player => {
+    const video = player.querySelector('.bm-problem-video');
+    const btn = player.querySelector('.bm-play-btn');
+    if (!video || !btn) return;
+    btn.addEventListener('click', () => {
+      video.play();
+      btn.classList.add('hidden');
+    });
+    video.addEventListener('click', () => {
+      if (video.paused) { video.play(); btn.classList.add('hidden'); }
+      else { video.pause(); btn.classList.remove('hidden'); }
+    });
+  });
 })();
 
 // Image lightbox for benchmark images
