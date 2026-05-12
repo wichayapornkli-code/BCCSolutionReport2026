@@ -861,11 +861,31 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         if (wrap && wrap.classList.contains('impr-preview-wrap')) {
-          const imgs = wrap.querySelectorAll('.impr-preview-img');
-          imgs.forEach(img => img.classList.remove('active'));
-          if (imgs[idx]) imgs[idx].classList.add('active');
+          const items = wrap.querySelectorAll('.impr-preview-img');
+          items.forEach(el => {
+            el.classList.remove('active');
+            if (el.tagName === 'VIDEO') { el.pause(); el.currentTime = 0; }
+          });
+          if (items[idx]) {
+            items[idx].classList.add('active');
+            if (items[idx].tagName === 'VIDEO') items[idx].play();
+          }
         }
       });
     });
   });
+  // Auto-play initially active videos
+  document.querySelectorAll('.impr-preview-wrap .impr-preview-img.active').forEach(el => {
+    if (el.tagName === 'VIDEO') el.play();
+  });
 })();
+
+// Back-to-index links: use snapToIndex instead of native anchor scroll
+document.querySelectorAll('a.back-to-index').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').replace('#', '');
+    const idx = allSections.findIndex(s => s.id === targetId);
+    if (idx !== -1) window.snapToIndex(idx);
+  });
+});
