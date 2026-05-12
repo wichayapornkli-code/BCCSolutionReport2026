@@ -1970,6 +1970,13 @@ html, body { overflow: hidden; height: 100vh; margin: 0; }
   color: var(--dimmer);
   margin-bottom: 10px;
 }
+.bm-problem-desc {
+  font-size: 0.82rem;
+  color: var(--dimmer);
+  line-height: 1.6;
+  max-width: 560px;
+  margin-bottom: 12px;
+}
 .bm-problem-player {
   position: relative;
   display: inline-block;
