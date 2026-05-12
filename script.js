@@ -884,12 +884,20 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
     const btn = player.querySelector('.bm-play-btn');
     if (!video || !btn) return;
     btn.addEventListener('click', () => {
+      if (video.ended) video.currentTime = 0;
       video.play();
       btn.classList.add('hidden');
     });
     video.addEventListener('click', () => {
-      if (video.paused) { video.play(); btn.classList.add('hidden'); }
+      if (video.paused || video.ended) {
+        if (video.ended) video.currentTime = 0;
+        video.play();
+        btn.classList.add('hidden');
+      }
       else { video.pause(); btn.classList.remove('hidden'); }
+    });
+    video.addEventListener('ended', () => {
+      btn.classList.remove('hidden');
     });
   });
 })();
