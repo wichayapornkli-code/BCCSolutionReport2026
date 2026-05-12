@@ -878,27 +878,31 @@ Object.defineProperty(window, 'currentSectionIdx', { get: () => currentSectionId
   document.querySelectorAll('.impr-preview-wrap .impr-preview-img.active').forEach(el => {
     if (el.tagName === 'VIDEO') el.play();
   });
-  // Click-to-play for current-problem videos
+  // Click opens fullscreen lightbox for current-problem videos
+  const bmLightbox = document.getElementById('bm-problem-lightbox');
+  const bmLbVideo = document.getElementById('bm-problem-lightbox-video');
+  const bmLbClose = document.getElementById('bm-problem-lightbox-close');
+  function openBmLightbox() {
+    if (!bmLightbox || !bmLbVideo) return;
+    bmLightbox.classList.add('open');
+    bmLbVideo.currentTime = 0;
+    bmLbVideo.play();
+  }
+  function closeBmLightbox() {
+    if (!bmLightbox || !bmLbVideo) return;
+    bmLightbox.classList.remove('open');
+    bmLbVideo.pause();
+    bmLbVideo.currentTime = 0;
+  }
+  if (bmLbClose) bmLbClose.addEventListener('click', closeBmLightbox);
+  if (bmLightbox) bmLightbox.addEventListener('click', e => { if (e.target === bmLightbox) closeBmLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && bmLightbox && bmLightbox.classList.contains('open')) closeBmLightbox(); });
   document.querySelectorAll('.bm-problem-player').forEach(player => {
     const video = player.querySelector('.bm-problem-video');
     const btn = player.querySelector('.bm-play-btn');
     if (!video || !btn) return;
-    btn.addEventListener('click', () => {
-      if (video.ended) video.currentTime = 0;
-      video.play();
-      btn.classList.add('hidden');
-    });
-    video.addEventListener('click', () => {
-      if (video.paused || video.ended) {
-        if (video.ended) video.currentTime = 0;
-        video.play();
-        btn.classList.add('hidden');
-      }
-      else { video.pause(); btn.classList.remove('hidden'); }
-    });
-    video.addEventListener('ended', () => {
-      btn.classList.remove('hidden');
-    });
+    btn.addEventListener('click', openBmLightbox);
+    video.addEventListener('click', openBmLightbox);
   });
 })();
 

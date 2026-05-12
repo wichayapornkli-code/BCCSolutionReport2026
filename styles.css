@@ -1201,6 +1201,20 @@ h2 { font-size: clamp(2rem, 4.8vw, 3.9rem); }
   box-shadow: 0 32px 80px rgba(0,0,0,0.5);
   object-fit: contain;
 }
+/* bm-problem video lightbox — no fixed aspect-ratio, fits video naturally */
+.bm-problem-lightbox-inner {
+  width: min(90vw, 1100px);
+  aspect-ratio: unset;
+}
+.bm-problem-lightbox-inner video {
+  width: 100%;
+  height: auto;
+  max-height: 88vh;
+  display: block;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
 .bm-img {
   position: relative;
   cursor: zoom-in;
@@ -2014,6 +2028,7 @@ html, body { overflow: hidden; height: 100vh; margin: 0; }
   border-radius: 20px;
   padding: 4px;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 24px 60px rgba(0,0,0,0.32);
+  cursor: pointer;
 }
 .bm-problem-video {
   width: 100%;
