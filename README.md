@@ -10,5 +10,7 @@ Open `index.html` in any modern browser. No build step required.
 
 ## Files
 
-- `index.html` — Main presentation (self-contained, all media embedded)
+- `index.html` — Main presentation (references external CSS and JS files)
+- `styles.css` — All styles extracted from `index.html` (5 style blocks)
+- `script.js` — All scripts extracted from `index.html` (9 script blocks)
 - `bcc-logo.svg` — BCC Bangkok Cable logo
